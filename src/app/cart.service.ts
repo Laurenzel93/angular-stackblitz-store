@@ -1,8 +1,5 @@
 import { Product } from './products';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class CartService {
   items: Product[] = [];
   constructor() {}
