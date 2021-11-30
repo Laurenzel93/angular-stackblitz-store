@@ -9,7 +9,16 @@ import { Product, products } from '../products';
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product | undefined;
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    // First step is to get the product id from the current route
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('productId'));
+
+    //Next, find the product that corresponds with the id provided in the route
+    this.product = products.find(
+      (product) => product.id === productIdFromRoute
+    );
+  }
 }
